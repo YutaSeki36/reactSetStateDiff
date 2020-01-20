@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    ​
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const FuncComponent = props => {
+        const [state, setState] = React.useState({ a: 0, b: 0 });
+
+        const handleChangeA = a => {
+          setState({ a: state.a + a });
+        };
+
+        console.log(`a: ${state.a}, b: ${state.b}`);
+
+        return (
+          <div>
+            <p>a: {state.a}</p>
+            <p>b: {state.b}</p>
+
+            <button onClick={() => handleChangeA(1)}>a+1</button>
+          </div>
+        );
+      };
+
+      ReactDOM.render(<FuncComponent />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

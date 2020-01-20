@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    ​
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      class ClassComponent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            a: 0,
+            b: 0
+          };
+          this.handleChangeA = this.handleChangeA.bind(this);
+        }
+
+        handleChangeA(a) {
+          this.setState({ a: this.state.a + a });
+        }
+
+        render() {
+          console.log(`a: ${this.state.a}, b: ${this.state.b}`);
+          return (
+            <div>
+              <p>a: {this.state.a}</p>
+              <p>b: {this.state.b}</p>
+              <button onClick={() => this.handleChangeA(1)}>a+1</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<ClassComponent />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
